@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Xiaxian</title>
+    <link>https://xxou.github.io/categories/</link>
+    <description>Recent content in Categories on Xiaxian</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 21 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://xxou.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Syntax</title>
+      <link>https://xxou.github.io/categories/syntax/</link>
+      <pubDate>Sat, 21 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://xxou.github.io/categories/syntax/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Theme Demo</title>
+      <link>https://xxou.github.io/categories/theme-demo/</link>
+      <pubDate>Sat, 21 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://xxou.github.io/categories/theme-demo/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

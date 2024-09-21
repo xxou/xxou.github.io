@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Xiaxian</title>
+    <link>https://xxou.github.io/tags/</link>
+    <description>Recent content in Tags on Xiaxian</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 21 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://xxou.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Emoji</title>
+      <link>https://xxou.github.io/tags/emoji/</link>
+      <pubDate>Sat, 21 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://xxou.github.io/tags/emoji/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo</title>
+      <link>https://xxou.github.io/tags/hugo/</link>
+      <pubDate>Sat, 21 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://xxou.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Markdown</title>
+      <link>https://xxou.github.io/tags/markdown/</link>
+      <pubDate>Sat, 21 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://xxou.github.io/tags/markdown/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Notion</title>
+      <link>https://xxou.github.io/tags/notion/</link>
+      <pubDate>Sat, 21 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://xxou.github.io/tags/notion/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PDF</title>
+      <link>https://xxou.github.io/tags/pdf/</link>
+      <pubDate>Sat, 21 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://xxou.github.io/tags/pdf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Research</title>
+      <link>https://xxou.github.io/tags/research/</link>
+      <pubDate>Sat, 21 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://xxou.github.io/tags/research/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Css</title>
+      <link>https://xxou.github.io/tags/css/</link>
+      <pubDate>Thu, 13 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://xxou.github.io/tags/css/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Html</title>
+      <link>https://xxou.github.io/tags/html/</link>
+      <pubDate>Thu, 13 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://xxou.github.io/tags/html/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Shortcodes</title>
+      <link>https://xxou.github.io/tags/shortcodes/</link>
+      <pubDate>Wed, 12 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://xxou.github.io/tags/shortcodes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Text</title>
+      <link>https://xxou.github.io/tags/text/</link>
+      <pubDate>Wed, 05 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://xxou.github.io/tags/text/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
