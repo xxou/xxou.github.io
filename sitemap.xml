@@ -2,16 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://xxou.github.io/categories/bayesian/</loc>
+    <lastmod>2024-09-21T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://xxou.github.io/notes/bayesian-data-analysis/</loc>
     <lastmod>2024-09-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://xxou.github.io/tags/emoji/</loc>
-    <lastmod>2024-09-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xxou.github.io/tags/hugo/</loc>
-    <lastmod>2024-09-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xxou.github.io/tags/markdown/</loc>
+    <loc>https://xxou.github.io/categories/course/</loc>
     <lastmod>2024-09-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xxou.github.io/notes/</loc>
@@ -26,16 +23,22 @@
     <loc>https://xxou.github.io/tags/pdf/</loc>
     <lastmod>2024-09-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://xxou.github.io/tags/research/</loc>
+    <loc>https://xxou.github.io/categories/programme/</loc>
     <lastmod>2024-09-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://xxou.github.io/categories/syntax/</loc>
+    <loc>https://xxou.github.io/categories/r/</loc>
     <lastmod>2024-09-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://xxou.github.io/categories/theme-demo/</loc>
+    <loc>https://xxou.github.io/tags/</loc>
+    <lastmod>2024-09-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xxou.github.io/tags/textbook/</loc>
     <lastmod>2024-09-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xxou.github.io/</loc>
+    <lastmod>2024-09-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xxou.github.io/authors/xiaxian-ou/</loc>
     <lastmod>2024-09-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xxou.github.io/tags/css/</loc>
@@ -44,7 +47,28 @@
     <loc>https://xxou.github.io/tags/html/</loc>
     <lastmod>2023-07-13T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://xxou.github.io/tags/hugo/</loc>
+    <lastmod>2023-07-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xxou.github.io/authors/lone-coder/</loc>
+    <lastmod>2023-07-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xxou.github.io/tags/markdown/</loc>
+    <lastmod>2023-07-13T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://xxou.github.io/notes/markdown-syntax/</loc>
+    <lastmod>2023-07-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xxou.github.io/series/</loc>
+    <lastmod>2023-07-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xxou.github.io/categories/syntax/</loc>
+    <lastmod>2023-07-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xxou.github.io/series/theme-demo/</loc>
+    <lastmod>2023-07-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xxou.github.io/categories/theme-demo/</loc>
     <lastmod>2023-07-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xxou.github.io/notes/rich-content/</loc>
@@ -64,6 +88,9 @@
   </url><url>
     <loc>https://xxou.github.io/notes/mermaid-support/</loc>
     <lastmod>2023-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xxou.github.io/tags/emoji/</loc>
+    <lastmod>2023-07-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xxou.github.io/notes/emoji-support/</loc>
     <lastmod>2023-07-07T00:00:00+00:00</lastmod>
@@ -94,12 +121,6 @@
   </url><url>
     <loc>https://xxou.github.io/categoria/sintaxe/</loc>
     <lastmod>2023-01-04T23:21:06+01:00</lastmod>
-  </url><url>
-    <loc>https://xxou.github.io/tags/shortcodes/_index.pt-br/</loc>
-    <lastmod>2023-01-04T11:51:36+01:00</lastmod>
-  </url><url>
-    <loc>https://xxou.github.io/tags/</loc>
-    <lastmod>2023-01-04T11:51:36+01:00</lastmod>
   </url><url>
     <loc>https://xxou.github.io/about/</loc>
   </url><url>
