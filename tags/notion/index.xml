@@ -9,6 +9,13 @@
     <lastBuildDate>Sat, 21 Sep 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://xxou.github.io/tags/notion/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>causal PSEs</title>
+      <link>https://xxou.github.io/projects_inner/causal_pse/</link>
+      <pubDate>Sat, 21 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://xxou.github.io/projects_inner/causal_pse/</guid>
+      <description>&lt;h1 id=&#34;causal-path-specific-effect&#34;&gt;&#xA;  Causal Path-Specific Effect&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#causal-path-specific-effect&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h3 id=&#34;hatching_chick-examining-racial-disparities-in-healthcare-expenditures&#34;&gt;&#xA;  &amp;#x1f423; &lt;em&gt;Examining racial disparities in healthcare expenditures&lt;/em&gt;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#hatching_chick-examining-racial-disparities-in-healthcare-expenditures&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://xxou.github.io/images/race_dag.png&#34;&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Introduce novel statistical estimators derived from influence functions.&lt;/li&gt;&#xA;&lt;li&gt;Integrate super learning models.&lt;/li&gt;&#xA;&lt;li&gt;Apply Two-part model in zero-inflated skewed expenditure data.&lt;/li&gt;&#xA;&lt;li&gt;Examine PSEs via each mediator and direct effect.&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
       <title>Notion R notes (For try)</title>
       <link>https://xxou.github.io/notes/notion-r-notes/</link>
       <pubDate>Sat, 21 Sep 2024 00:00:00 +0000</pubDate>

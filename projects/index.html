@@ -36,9 +36,9 @@ Mixture Cure Model
 
 
 
-Introduce novel statistical estimators derived from influence functions.
+Introduce multiply robust estimators derived from influence functions.
 Integrate super learning models.
-Apply Two-part model in zero-inflated skewed expenditure data.
+Apply Two-part model in zero-inflated right-skewed expenditure data.
 Examine PSEs via each mediator and direct effect.
 
 
@@ -57,14 +57,14 @@ Examine PSEs via each mediator and direct effect.
   <meta name="twitter:title" content="Projects">
   <meta name="twitter:description" content="🔖 - - - - - - - - - - -
 Causal Path-Specific Effect Ophthalmology Health Mixture Cure Model 🔖 - - - - - - - - - - -
-Causal Path-Specific Effect Link to heading 🐣 Examining racial disparities in healthcare expenditures Link to heading Introduce novel statistical estimators derived from influence functions. Integrate super learning models. Apply Two-part model in zero-inflated skewed expenditure data. Examine PSEs via each mediator and direct effect. 🐣 Develop R package for flexible causal path-specific analysis Link to heading ">
+Causal Path-Specific Effect Link to heading 🐣 Examining racial disparities in healthcare expenditures Link to heading Introduce multiply robust estimators derived from influence functions. Integrate super learning models. Apply Two-part model in zero-inflated right-skewed expenditure data. Examine PSEs via each mediator and direct effect. 🐣 Develop R package for flexible causal path-specific analysis Link to heading ">
 
 <meta property="og:url" content="https://xxou.github.io/projects/">
   <meta property="og:site_name" content="Xiaxian">
   <meta property="og:title" content="Projects">
   <meta property="og:description" content="🔖 - - - - - - - - - - -
 Causal Path-Specific Effect Ophthalmology Health Mixture Cure Model 🔖 - - - - - - - - - - -
-Causal Path-Specific Effect Link to heading 🐣 Examining racial disparities in healthcare expenditures Link to heading Introduce novel statistical estimators derived from influence functions. Integrate super learning models. Apply Two-part model in zero-inflated skewed expenditure data. Examine PSEs via each mediator and direct effect. 🐣 Develop R package for flexible causal path-specific analysis Link to heading ">
+Causal Path-Specific Effect Link to heading 🐣 Examining racial disparities in healthcare expenditures Link to heading Introduce multiply robust estimators derived from influence functions. Integrate super learning models. Apply Two-part model in zero-inflated right-skewed expenditure data. Examine PSEs via each mediator and direct effect. 🐣 Develop R package for flexible causal path-specific analysis Link to heading ">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:tag" content="Hugo">
@@ -230,9 +230,9 @@ Causal Path-Specific Effect Link to heading 🐣 Examining racial disparities in
 </h3>
 <p><img src="/images/race_dag.png"></p>
 <ul>
-<li>Introduce novel statistical estimators derived from influence functions.</li>
+<li>Introduce multiply robust estimators derived from influence functions.</li>
 <li>Integrate super learning models.</li>
-<li>Apply Two-part model in zero-inflated skewed expenditure data.</li>
+<li>Apply Two-part model in zero-inflated right-skewed expenditure data.</li>
 <li>Examine PSEs via each mediator and direct effect.</li>
 </ul>
 <h3 id="hatching_chick-develop-r-package-for-flexible-causal-path-specific-analysis">
@@ -243,6 +243,7 @@ Causal Path-Specific Effect Link to heading 🐣 Examining racial disparities in
   </a>
 </h3>
 <p><img src="/images/dags.png"></p>
+<p>package in github: <a href="https://github.com/xxou/flexPaths"  class="external-link" target="_blank" rel="noopener">flexPaths</a></p>
 <ul>
 <li>Flexible model size: The number and the order of treatments and mediators can be flexible.</li>
 <li>Flexible decomposition: The Natural PSEs and Cumulative PSEs</li>
@@ -250,7 +251,6 @@ Causal Path-Specific Effect Link to heading 🐣 Examining racial disparities in
 <li>Flexible models: Include <code>glm/lm</code>, <code>dbarts</code>, <code>SuperLearner</code> to fit model. Offer the template for user to extend other models.</li>
 <li>Flexible estimators: Inverse Probability Weighting (IPW), plug-in G-computation, and efficient influence function estimator.</li>
 </ul>
-<p>package: <a href="https://github.com/xxou/flexPaths"  class="external-link" target="_blank" rel="noopener">flexPaths</a></p>
 <hr>
 <h1 id="ophthalmology-health">
   Ophthalmology Health
@@ -292,10 +292,6 @@ Causal Path-Specific Effect Link to heading 🐣 Examining racial disparities in
 S(t|z,x) = 1-\pi(z)+\pi(z)S_{\mu}(t|x)
 $$</p>
 <p><img src="/images/km_curve.jpg"></p>
-<ul>
-<li>Conducted the mixture cox PH cure model in <code>mixcure</code> package to explore the factors for recurrence time and factors for cured probability respectively, and estimated the cured fractions.</li>
-<li>Identified the interaction effect of age and activity of radioactive source (ARS) after propensity score matching, demonstrating that high ARS played opposite roles in the cure probability in young group and old group innovatively.</li>
-</ul>
 
   </article>
 </section>
