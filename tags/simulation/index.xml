@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Simulation on Xiaxian Ou</title><link>https://xxou.github.io/tags/simulation/</link><description>Recent content in Simulation on Xiaxian Ou</description><generator>Hugo</generator><language>en</language><lastBuildDate>Fri, 10 Apr 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://xxou.github.io/tags/simulation/index.xml" rel="self" type="application/rss+xml"/><item><title>Emory HPC Cluster Workflow using R for Simulations</title><link>https://xxou.github.io/posts/emory-hpc-workflow/</link><pubDate>Fri, 10 Apr 2026 00:00:00 +0000</pubDate><guid>https://xxou.github.io/posts/emory-hpc-workflow/</guid><description>&lt;h1 id="1-introduction">1. Introduction&lt;/h1>
+&lt;p>Emory University&amp;rsquo;s High Performance Computing (HPC) cluster provides researchers with powerful computational resources for running large-scale analyses. This tutorial demonstrates how to run simulation studies in R using the HPC&amp;rsquo;s job scheduling system (SLURM). For more details, visit the &lt;a href="https://scholarblogs.emory.edu/rsph-hpc/">RSCH HPC Documentation&lt;/a>.&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>&amp;#x1f331;Project Overview&lt;/strong>&lt;/p>
+&lt;p>The example project investigates logistic regression vs. linear regression performance on binary outcome data across different sample sizes. Key parameters:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Sample sizes&lt;/strong>: 500, 1000, 2000&lt;/li>
+&lt;li>&lt;strong>Models&lt;/strong>: Logistic regression, Linear regression&lt;/li>
+&lt;li>&lt;strong>Replications&lt;/strong>: 1,000 per scenario&lt;/li>
+&lt;li>&lt;strong>Total jobs&lt;/strong>: 6,000 (2 models × 3 sample sizes × 1,000 replications)&lt;/li>
+&lt;/ul>
+&lt;/blockquote>
+&lt;h1 id="2-local-r-project">2. Local R Project&lt;/h1>
+&lt;p>First, create an &lt;strong>R project&lt;/strong> on your &lt;strong>local computer&lt;/strong>. Organize your files so that the &lt;code>HPC&lt;/code> folder contains jobs that will be submitted to the cluster and receive results from it. The complete code is available on GitHub: &lt;a href="https://github.com/xxou/Emory-HPC">xxou
+Emory-HPC&lt;/a>.&lt;/p></description></item></channel></rss>
