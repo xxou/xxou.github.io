@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+<title id="title">Path-specific analysis with three mediators</title>
+<desc id="desc">C, A, M1, M2, M3, and Y in causal order. Each earlier node points to every later node: 15 directed edges.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 1 L 9 5 L 0 9 L 2.5 5 Z" fill="#718393"/></marker></defs>
+<rect width="960" height="520" fill="#fff"/>
+<path d="M 108.20 299.77 C 145 500, 815 500, 851.80 299.77" fill="none" stroke="#fff" stroke-width="6"/>
+<path data-source="C" data-target="Y" d="M 108.20 299.77 C 145 500, 815 500, 851.80 299.77" fill="none" stroke="#718393" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 108.20 250.23 C 145 45, 659 45, 695.80 250.23" fill="none" stroke="#fff" stroke-width="6"/>
+<path data-source="C" data-target="M3" d="M 108.20 250.23 C 145 45, 659 45, 695.80 250.23" fill="none" stroke="#718393" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 264.20 250.23 C 301 45, 815 45, 851.80 250.23" fill="none" stroke="#fff" stroke-width="6"/>
+<path data-source="A" data-target="Y" d="M 264.20 250.23 C 301 45, 815 45, 851.80 250.23" fill="none" stroke="#718393" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 108.20 299.77 C 145 400, 503 400, 539.80 299.77" fill="none" stroke="#fff" stroke-width="6"/>
+<path data-source="C" data-target="M2" d="M 108.20 299.77 C 145 400, 503 400, 539.80 299.77" fill="none" stroke="#718393" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 264.20 299.77 C 301 400, 659 400, 695.80 299.77" fill="none" stroke="#fff" stroke-width="6"/>
+<path data-source="A" data-target="M3" d="M 264.20 299.77 C 301 400, 659 400, 695.80 299.77" fill="none" stroke="#718393" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 420.20 299.77 C 457 400, 815 400, 851.80 299.77" fill="none" stroke="#fff" stroke-width="6"/>
+<path data-source="M1" data-target="Y" d="M 420.20 299.77 C 457 400, 815 400, 851.80 299.77" fill="none" stroke="#718393" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 108.20 250.23 C 145 170, 347 170, 383.80 250.23" fill="none" stroke="#fff" stroke-width="6"/>
+<path data-source="C" data-target="M1" d="M 108.20 250.23 C 145 170, 347 170, 383.80 250.23" fill="none" stroke="#718393" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 264.20 250.23 C 301 170, 503 170, 539.80 250.23" fill="none" stroke="#fff" stroke-width="6"/>
+<path data-source="A" data-target="M2" d="M 264.20 250.23 C 301 170, 503 170, 539.80 250.23" fill="none" stroke="#718393" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 420.20 250.23 C 457 170, 659 170, 695.80 250.23" fill="none" stroke="#fff" stroke-width="6"/>
+<path data-source="M1" data-target="M3" d="M 420.20 250.23 C 457 170, 659 170, 695.80 250.23" fill="none" stroke="#718393" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 576.20 250.23 C 613 170, 815 170, 851.80 250.23" fill="none" stroke="#fff" stroke-width="6"/>
+<path data-source="M2" data-target="Y" d="M 576.20 250.23 C 613 170, 815 170, 851.80 250.23" fill="none" stroke="#718393" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 128 275 L 208 275" fill="none" stroke="#fff" stroke-width="6"/>
+<path data-source="C" data-target="A" d="M 128 275 L 208 275" fill="none" stroke="#718393" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 284 275 L 364 275" fill="none" stroke="#fff" stroke-width="6"/>
+<path data-source="A" data-target="M1" d="M 284 275 L 364 275" fill="none" stroke="#718393" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 440 275 L 520 275" fill="none" stroke="#fff" stroke-width="6"/>
+<path data-source="M1" data-target="M2" d="M 440 275 L 520 275" fill="none" stroke="#718393" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 596 275 L 676 275" fill="none" stroke="#fff" stroke-width="6"/>
+<path data-source="M2" data-target="M3" d="M 596 275 L 676 275" fill="none" stroke="#718393" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 752 275 L 832 275" fill="none" stroke="#fff" stroke-width="6"/>
+<path data-source="M3" data-target="Y" d="M 752 275 L 832 275" fill="none" stroke="#718393" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow)"/>
+<ellipse cx="90" cy="275" rx="35" ry="29" fill="#E9EFF3" stroke="#A3B1BF" stroke-width="1.5"/>
+<text x="90" y="284" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="32" fill="#3E5365">C</text>
+<ellipse cx="246" cy="275" rx="35" ry="29" fill="#D5E9F7" stroke="#A3B1BF" stroke-width="1.5"/>
+<text x="246" y="284" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="32" fill="#3E5365">A</text>
+<ellipse cx="402" cy="275" rx="35" ry="29" fill="#F4D9E2" stroke="#A3B1BF" stroke-width="1.5"/>
+<text x="402" y="284" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="32" fill="#3E5365">M<tspan baseline-shift="sub" font-size="21">1</tspan></text>
+<ellipse cx="558" cy="275" rx="35" ry="29" fill="#D4EBDD" stroke="#A3B1BF" stroke-width="1.5"/>
+<text x="558" y="284" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="32" fill="#3E5365">M<tspan baseline-shift="sub" font-size="21">2</tspan></text>
+<ellipse cx="714" cy="275" rx="35" ry="29" fill="#FFF0BF" stroke="#A3B1BF" stroke-width="1.5"/>
+<text x="714" y="284" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="32" fill="#3E5365">M<tspan baseline-shift="sub" font-size="21">3</tspan></text>
+<ellipse cx="870" cy="275" rx="35" ry="29" fill="#E2DCF3" stroke="#A3B1BF" stroke-width="1.5"/>
+<text x="870" y="284" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="32" fill="#3E5365">Y</text>
+</svg>

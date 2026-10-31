@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="960" viewBox="0 0 1220 960" role="img" aria-labelledby="title desc">
+<title id="title">Path-specific effects: single-period and longitudinal DAGs</title>
+<desc id="desc">Two reference DAGs stacked vertically. Upper graph: C, A, M, L, Y and ten directed edges. Lower graph: A_1, M_1, L_1, A_2, M_2, L_2, Y and twenty-one directed edges. Every earlier variable points to every later variable in the respective ordering.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 L 2.5 5 Z" fill="context-stroke"/></marker></defs>
+<rect width="1220" height="960" fill="#fff"/>
+<line x1="70" y1="445" x2="1150" y2="445" stroke="#EDF0F4" stroke-width="2"/>
+<path d="M 546.41 106.80 L 243.59 258.20" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="single-C" data-target="single-A" data-direction="forward" d="M 546.41 106.80 L 243.59 258.20" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 565.46 121.82 L 484.54 243.18" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="single-C" data-target="single-M" data-direction="forward" d="M 565.46 121.82 L 484.54 243.18" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 614.54 121.82 L 695.46 243.18" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="single-C" data-target="single-L" data-direction="forward" d="M 614.54 121.82 L 695.46 243.18" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 633.59 106.80 L 936.41 258.20" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="single-C" data-target="single-Y" data-direction="forward" d="M 633.59 106.80 L 936.41 258.20" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 251.00 280.00 L 409.00 280.00" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="single-A" data-target="single-M" data-direction="forward" d="M 251.00 280.00 L 409.00 280.00" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 511.00 280.00 L 669.00 280.00" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="single-M" data-target="single-L" data-direction="forward" d="M 511.00 280.00 L 669.00 280.00" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 771.00 280.00 L 929.00 280.00" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="single-L" data-target="single-Y" data-direction="forward" d="M 771.00 280.00 L 929.00 280.00" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 187.77 239.23 C 140 80, 510 145, 679.80 254.16" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="single-A" data-target="single-L" data-direction="forward" d="M 187.77 239.23 C 140 80, 510 145, 679.80 254.16" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 499.82 253.76 C 680 135, 1030 90, 990.80 238.95" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="single-M" data-target="single-Y" data-direction="forward" d="M 499.82 253.76 C 680 135, 1030 90, 990.80 238.95" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 241.22 304.73 C 425 415, 760 415, 939.10 305.09" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="single-A" data-target="single-Y" data-direction="forward" d="M 241.22 304.73 C 425 415, 760 415, 939.10 305.09" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 138.66 687.26 L 231.34 632.74" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-A_1" data-target="multi-M_1" data-direction="forward" d="M 138.66 687.26 L 231.34 632.74" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 144.42 696.93 L 395.58 623.07" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-A_1" data-target="multi-L_1" data-direction="forward" d="M 144.42 696.93 L 395.58 623.07" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 147.00 710.00 L 563.00 710.00" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-A_1" data-target="multi-A_2" data-direction="forward" d="M 147.00 710.00 L 563.00 710.00" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 126.64 742.95 C 290 945, 800 1015, 781.97 649.96" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-A_1" data-target="multi-M_2" data-direction="forward" d="M 126.64 742.95 C 290 945, 800 1015, 781.97 649.96" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 133.39 738.15 C 450 1005, 825 970, 936.68 648.36" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-A_1" data-target="multi-L_2" data-direction="forward" d="M 133.39 738.15 C 450 1005, 825 970, 936.68 648.36" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 139.80 731.27 C 390 865, 810 865, 1079.48 730.26" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-A_1" data-target="multi-Y" data-direction="forward" d="M 139.80 731.27 C 390 865, 810 865, 1079.48 730.26" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 317.00 610.00 L 393.00 610.00" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-M_1" data-target="multi-L_1" data-direction="forward" d="M 317.00 610.00 L 393.00 610.00" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 314.42 623.07 L 565.58 696.93" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-M_1" data-target="multi-A_2" data-direction="forward" d="M 314.42 623.07 L 565.58 696.93" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 304.36 582.71 C 440 475, 610 475, 745.64 582.71" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-M_1" data-target="multi-M_2" data-direction="forward" d="M 304.36 582.71 C 440 475, 610 475, 745.64 582.71" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 301.28 580.14 C 490 400, 730 445, 914.74 583.55" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-M_1" data-target="multi-L_2" data-direction="forward" d="M 301.28 580.14 C 490 400, 730 445, 914.74 583.55" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 315.55 619.87 C 570 675, 840 667, 1073.75 702.90" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-M_1" data-target="multi-Y" data-direction="forward" d="M 315.55 619.87 C 570 675, 840 667, 1073.75 702.90" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 478.66 632.74 L 571.34 687.26" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-L_1" data-target="multi-A_2" data-direction="forward" d="M 478.66 632.74 L 571.34 687.26" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 487.00 610.00 L 733.00 610.00" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-L_1" data-target="multi-M_2" data-direction="forward" d="M 487.00 610.00 L 733.00 610.00" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 477.20 585.55 C 615 495, 790 495, 914.09 584.19" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-L_1" data-target="multi-L_2" data-direction="forward" d="M 477.20 585.55 C 615 495, 790 495, 914.09 584.19" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 483.37 625.42 C 665 690, 880 690, 1073.22 706.10" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-L_1" data-target="multi-Y" data-direction="forward" d="M 483.37 625.42 C 665 690, 880 690, 1073.22 706.10" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 648.66 687.26 L 741.34 632.74" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-A_2" data-target="multi-M_2" data-direction="forward" d="M 648.66 687.26 L 741.34 632.74" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 654.42 696.93 L 905.58 623.07" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-A_2" data-target="multi-L_2" data-direction="forward" d="M 654.42 696.93 L 905.58 623.07" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 657.00 710.00 L 1073.00 710.00" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-A_2" data-target="multi-Y" data-direction="forward" d="M 657.00 710.00 L 1073.00 710.00" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 827.00 610.00 L 903.00 610.00" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-M_2" data-target="multi-L_2" data-direction="forward" d="M 827.00 610.00 L 903.00 610.00" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 824.42 623.07 L 1075.58 696.93" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-M_2" data-target="multi-Y" data-direction="forward" d="M 824.42 623.07 L 1075.58 696.93" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 988.66 632.74 L 1081.34 687.26" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="multi-L_2" data-target="multi-Y" data-direction="forward" d="M 988.66 632.74 L 1081.34 687.26" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<g data-node="single-C"><ellipse cx="590" cy="85" rx="46" ry="37" fill="#EDF0F4" stroke="#91A0AD" stroke-width="2"/>
+<text x="590" y="96" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#364657" font-style="italic">C</text></g>
+<g data-node="single-A"><ellipse cx="200" cy="280" rx="46" ry="37" fill="#D3E8F8" stroke="#91A0AD" stroke-width="2"/>
+<text x="200" y="291" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#364657" font-style="italic">A</text></g>
+<g data-node="single-M"><ellipse cx="460" cy="280" rx="46" ry="37" fill="#FCDCE6" stroke="#91A0AD" stroke-width="2"/>
+<text x="460" y="291" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#364657" font-style="italic">M</text></g>
+<g data-node="single-L"><ellipse cx="720" cy="280" rx="46" ry="37" fill="#CDE8DA" stroke="#91A0AD" stroke-width="2"/>
+<text x="720" y="291" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#364657" font-style="italic">L</text></g>
+<g data-node="single-Y"><ellipse cx="980" cy="280" rx="46" ry="37" fill="#E2DAF3" stroke="#91A0AD" stroke-width="2"/>
+<text x="980" y="291" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#364657" font-style="italic">Y</text></g>
+<g data-node="multi-A_1"><ellipse cx="100" cy="710" rx="42" ry="35" fill="#D3E8F8" stroke="#91A0AD" stroke-width="2"/>
+<text x="100" y="721" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#364657" font-style="italic">A<tspan font-size="27" dy="9">1</tspan></text></g>
+<g data-node="multi-M_1"><ellipse cx="270" cy="610" rx="42" ry="35" fill="#FCDCE6" stroke="#91A0AD" stroke-width="2"/>
+<text x="270" y="621" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#364657" font-style="italic">M<tspan font-size="27" dy="9">1</tspan></text></g>
+<g data-node="multi-L_1"><ellipse cx="440" cy="610" rx="42" ry="35" fill="#CDE8DA" stroke="#91A0AD" stroke-width="2"/>
+<text x="440" y="621" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#364657" font-style="italic">L<tspan font-size="27" dy="9">1</tspan></text></g>
+<g data-node="multi-A_2"><ellipse cx="610" cy="710" rx="42" ry="35" fill="#D3E8F8" stroke="#91A0AD" stroke-width="2"/>
+<text x="610" y="721" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#364657" font-style="italic">A<tspan font-size="27" dy="9">2</tspan></text></g>
+<g data-node="multi-M_2"><ellipse cx="780" cy="610" rx="42" ry="35" fill="#FCDCE6" stroke="#91A0AD" stroke-width="2"/>
+<text x="780" y="621" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#364657" font-style="italic">M<tspan font-size="27" dy="9">2</tspan></text></g>
+<g data-node="multi-L_2"><ellipse cx="950" cy="610" rx="42" ry="35" fill="#CDE8DA" stroke="#91A0AD" stroke-width="2"/>
+<text x="950" y="621" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#364657" font-style="italic">L<tspan font-size="27" dy="9">2</tspan></text></g>
+<g data-node="multi-Y"><ellipse cx="1120" cy="710" rx="42" ry="35" fill="#E2DAF3" stroke="#91A0AD" stroke-width="2"/>
+<text x="1120" y="721" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#364657" font-style="italic">Y</text></g>
+</svg>

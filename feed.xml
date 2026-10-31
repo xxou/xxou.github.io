@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://xxou.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://xxou.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-10-30T14:38:10-04:00</updated><id>https://xxou.github.io/feed.xml</id><title type="html">blank</title><subtitle>Xiaxian Ou — PhD student in Biostatistics at Emory University. Causal inference, mediation, and dynamic treatment regimes.</subtitle><entry><title type="html">Emory HPC Cluster Workflow using R for Simulations</title><link href="https://xxou.github.io/posts/emory-hpc-workflow/" rel="alternate" type="text/html" title="Emory HPC Cluster Workflow using R for Simulations" /><published>2026-04-10T00:00:00-04:00</published><updated>2026-04-10T00:00:00-04:00</updated><id>https://xxou.github.io/posts/emory-hpc-workflow</id><content type="html" xml:base="https://xxou.github.io/posts/emory-hpc-workflow/"><![CDATA[<h1 id="1-introduction">1. Introduction</h1>
+
+<p>Emory University’s High Performance Computing (HPC) cluster provides researchers with powerful computational resources for running large-scale analyses. This tutorial demonstrates how to run simulation studies in R using the HPC’s job scheduling system (SLURM). For more details, visit the <a href="https://scholarblogs.emory.edu/rsph-hpc/">RSPH HPC Documentation</a>.</p>
+
+<p><strong>:seedling:Project Overview</strong></p>
+
+<p>The example project investigates logistic regression vs. linear regression performance on binary outcome data across different sample sizes. Key parameters:</p>
+<blockquote>
+  <ul>
+    <li><strong>Sample sizes</strong>: 500, 1000, 2000</li>
+    <li><strong>Models</strong>: Logistic regression, Linear regression</li>
+    <li><strong>Replications</strong>: 1,000 per scenario</li>
+    <li><strong>Total jobs</strong>: 6,000 (2 models × 3 sample sizes × 1,000 replications)</li>
+  </ul>
+</blockquote>
+
+<h1 id="2-local-r-project">2. Local R Project</h1>
+
+<p>First, create an <strong>R project</strong> on your <strong>local computer</strong>. Organize your files so that the <code class="language-plaintext highlighter-rouge">HPC</code> folder contains jobs that will be submitted to the cluster and receive results from it. The complete code is available on GitHub: <a href="https://github.com/xxou/Emory-HPC">xxou
+Emory-HPC</a>.</p>
+
+<p><strong>:bangbang:NOTE</strong>: We use the <code class="language-plaintext highlighter-rouge">here()</code> package to ensure consistent working directory paths across local and HPC environments.</p>
+
+<p><img src="/images/Emory-HPC-figs/local_R_project_folder.png" alt="Local R Project Folder" /></p>
+
+<h2 id="21-generate-simulation-jobs">2.1 Generate Simulation Jobs</h2>
+
+<p>The file <code class="language-plaintext highlighter-rouge">1_generate_job.R</code> generates simulation job lists. It creates several text files containing commands that will run <code class="language-plaintext highlighter-rouge">2_task.R</code> on the HPC.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># *****************************************************</span><span class="w">
+</span><span class="c1">#  1. Generate simulation jobs</span><span class="w">
+</span><span class="c1"># *****************************************************</span><span class="w">
+
+</span><span class="c1"># Number of simulation replicates per scenario</span><span class="w">
+</span><span class="n">sims</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1000</span><span class="w">
+
+</span><span class="c1"># Generate parameter grid: all combinations of seed, sample size, and model</span><span class="w">
+</span><span class="n">param_grid</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">expand.grid</span><span class="p">(</span><span class="n">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">sims</span><span class="p">,</span><span class="w">
+                          </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="m">2000</span><span class="p">),</span><span class="w">
+                          </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"logistic"</span><span class="p">,</span><span class="s2">"lm"</span><span class="p">)</span><span class="w">
+</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Create job list: command to run each simulation task</span><span class="w">
+</span><span class="c1"># Format: "Rscript 2_task.R &lt;seed&gt; &lt;n&gt; &lt;model&gt;"</span><span class="w">
+</span><span class="n">param_grid</span><span class="o">$</span><span class="n">joblist</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">paste</span><span class="p">(</span><span class="s2">"Rscript 2_task.R"</span><span class="p">,</span><span class="w">
+                          </span><span class="n">param_grid</span><span class="o">$</span><span class="n">seed</span><span class="p">,</span><span class="w">
+                          </span><span class="n">param_grid</span><span class="o">$</span><span class="n">n</span><span class="p">,</span><span class="w">
+                          </span><span class="n">param_grid</span><span class="o">$</span><span class="n">model</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Emory HPC limits: maximum 1000 jobs per job array chunk</span><span class="w">
+</span><span class="c1"># Split total jobs into chunks of at most 1000 jobs each</span><span class="w">
+</span><span class="n">n_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">nrow</span><span class="p">(</span><span class="n">param_grid</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">sims</span><span class="w">
+
+</span><span class="c1"># Generate job list files (one per chunk)</span><span class="w">
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">n_list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="c1"># Calculate row indices for the i-th chunk</span><span class="w">
+  </span><span class="n">start_row</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">((</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sims</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w">
+  </span><span class="n">end_row</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sims</span><span class="w">
+
+  </span><span class="c1"># Write job list to a text file for HPC submission</span><span class="w">
+  </span><span class="n">write.table</span><span class="p">(</span><span class="n">param_grid</span><span class="p">[</span><span class="n">start_row</span><span class="o">:</span><span class="n">end_row</span><span class="p">,</span><span class="w"> </span><span class="s1">'joblist'</span><span class="p">],</span><span class="w">
+              </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">here</span><span class="o">::</span><span class="n">here</span><span class="p">(</span><span class="s2">"HPC/"</span><span class="p">,</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"joblist_n"</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="s2">".txt"</span><span class="p">)),</span><span class="w">
+              </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">col.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">quote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<blockquote>
+  <p><strong>Important</strong>: Emory HPC limits job arrays to 1,000 jobs per chunk. After running this code locally, you will have <code class="language-plaintext highlighter-rouge">joblist_n1.txt</code> through <code class="language-plaintext highlighter-rouge">joblist_n6.txt</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Each .txt file can be viewed as a class, and there are six classes in total. Within each class, 1,000 students can work simultaneously. Here, we have simply prepared the commands for each student so that they know what task settings to perform.</p>
+</blockquote>
+
+<h2 id="22-task-file">2.2 Task File</h2>
+
+<p>The file <code class="language-plaintext highlighter-rouge">2_task.R</code> runs the actual simulation. It will be executed on the cluster (not your local computer).</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ******************************************</span><span class="w">
+</span><span class="c1">#  2. Main task to run simulation</span><span class="w">
+</span><span class="c1"># ******************************************</span><span class="w">
+
+</span><span class="n">freshr</span><span class="o">::</span><span class="n">freshr</span><span class="p">()</span><span class="w">
+
+</span><span class="c1"># Parse command-line arguments: seed, sample size, and model type</span><span class="w">
+</span><span class="n">args</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">commandArgs</span><span class="p">(</span><span class="n">trailingOnly</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w">
+</span><span class="n">seed</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="m">1</span><span class="p">])</span><span class="w">
+</span><span class="n">n</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="m">2</span><span class="p">])</span><span class="w">
+</span><span class="n">model</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="m">3</span><span class="p">])</span><span class="w">
+
+</span><span class="c1"># Load required packages</span><span class="w">
+</span><span class="n">pacman</span><span class="o">::</span><span class="n">p_load</span><span class="p">(</span><span class="n">tibble</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Load data generation function</span><span class="w">
+</span><span class="n">source</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="n">here</span><span class="p">(</span><span class="s2">"Functions/1_data_generation.R"</span><span class="p">))</span><span class="w">
+
+</span><span class="c1"># Generate synthetic data</span><span class="w">
+</span><span class="n">set.seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span><span class="w">
+</span><span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">DGP</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Fit model based on specified type</span><span class="w">
+</span><span class="k">if</span><span class="p">(</span><span class="n">model</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"logistic"</span><span class="p">){</span><span class="w">
+  </span><span class="n">fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">glm</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">binomial</span><span class="p">())</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="k">if</span><span class="p">(</span><span class="n">model</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"lm"</span><span class="p">){</span><span class="w">
+  </span><span class="n">fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">glm</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gaussian</span><span class="p">())</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1"># Create results table with estimated coefficients and scenario info</span><span class="w">
+</span><span class="n">tbl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tibble</span><span class="p">(</span><span class="w">
+  </span><span class="c1"># Estimated coefficients</span><span class="w">
+  </span><span class="n">beta0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coef</span><span class="p">(</span><span class="n">fit</span><span class="p">)[[</span><span class="s2">"(Intercept)"</span><span class="p">]],</span><span class="w">
+  </span><span class="n">beta1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coef</span><span class="p">(</span><span class="n">fit</span><span class="p">)[[</span><span class="s2">"x"</span><span class="p">]],</span><span class="w">
+  </span><span class="c1"># Scenario parameters</span><span class="w">
+  </span><span class="n">seed</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">seed</span><span class="p">,</span><span class="w">
+  </span><span class="n">n</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w">
+  </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="w">
+</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Save results to file</span><span class="w">
+</span><span class="n">save</span><span class="p">(</span><span class="n">tbl</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">here</span><span class="o">::</span><span class="n">here</span><span class="p">(</span><span class="s2">"HPC/HPC_Results"</span><span class="p">,</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"seed"</span><span class="p">,</span><span class="w"> </span><span class="n">seed</span><span class="p">,</span><span class="w"> </span><span class="s2">"_n"</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="s2">"_"</span><span class="p">,</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="s2">".Rdata"</span><span class="p">)))</span><span class="w">
+</span></code></pre></div></div>
+<blockquote>
+  <p>After receiving the assigned parameters, each student will use them to run the job.</p>
+</blockquote>
+
+<blockquote>
+  <p>Each task generates output stored in <code class="language-plaintext highlighter-rouge">HPC/HPC_Results/</code>.</p>
+</blockquote>
+
+<h2 id="23-summarize-results">2.3 Summarize Results</h2>
+
+<p>Once you complete Task 2.2 on the HPC cluster, you will obtain 6,000 results in HPC/HPC_Results/ in cluster. The file <code class="language-plaintext highlighter-rouge">3_summarize_results.R</code> collects all results into a single file and identifies any failed jobs for rerunning.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ******************************************</span><span class="w">
+</span><span class="c1">#  3. Summarize simulation results</span><span class="w">
+</span><span class="c1"># ******************************************</span><span class="w">
+
+</span><span class="n">sims</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1000</span><span class="w">
+
+</span><span class="c1"># Reconstruct parameter grid to match job specifications</span><span class="w">
+</span><span class="n">param_grid</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">expand.grid</span><span class="p">(</span><span class="n">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">sims</span><span class="p">,</span><span class="w">
+                          </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="m">2000</span><span class="p">),</span><span class="w">
+                          </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"logistic"</span><span class="p">,</span><span class="s2">"lm"</span><span class="p">)</span><span class="w">
+</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Construct expected output filenames</span><span class="w">
+</span><span class="n">param_grid</span><span class="o">$</span><span class="n">file_name</span><span class="w"> </span><span class="o">&lt;-</span><span class="n">paste0</span><span class="p">(</span><span class="s2">"seed"</span><span class="p">,</span><span class="w"> </span><span class="n">param_grid</span><span class="o">$</span><span class="n">seed</span><span class="p">,</span><span class="w">
+                              </span><span class="s2">"_n"</span><span class="p">,</span><span class="w">   </span><span class="n">param_grid</span><span class="o">$</span><span class="n">n</span><span class="p">,</span><span class="w">
+                              </span><span class="s2">"_"</span><span class="p">,</span><span class="w">    </span><span class="n">param_grid</span><span class="o">$</span><span class="n">model</span><span class="p">,</span><span class="w">
+                              </span><span class="s2">".Rdata"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># For failed jobs: create rerun commands</span><span class="w">
+</span><span class="n">param_grid</span><span class="o">$</span><span class="n">rerun_name</span><span class="o">&lt;-</span><span class="n">paste</span><span class="p">(</span><span class="s2">"Rscript 2_task.R"</span><span class="p">,</span><span class="w">
+                             </span><span class="n">param_grid</span><span class="o">$</span><span class="n">seed</span><span class="p">,</span><span class="w">
+                             </span><span class="n">param_grid</span><span class="o">$</span><span class="n">n</span><span class="p">,</span><span class="w">
+                             </span><span class="n">param_grid</span><span class="o">$</span><span class="n">model</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Load all results, handling potential job failures</span><span class="w">
+</span><span class="n">AllResults</span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">()</span><span class="w">
+</span><span class="n">false_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span><span class="w">
+
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">dim</span><span class="p">(</span><span class="n">param_grid</span><span class="p">)[</span><span class="m">1</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">file_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param_grid</span><span class="o">$</span><span class="n">file_name</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w">
+
+  </span><span class="c1"># Attempt to load the data file</span><span class="w">
+  </span><span class="n">load_status</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tryCatch</span><span class="p">({</span><span class="w">
+    </span><span class="n">load</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="n">here</span><span class="p">(</span><span class="s2">"HPC/HPC_Results"</span><span class="p">,</span><span class="w"> </span><span class="n">file_name</span><span class="p">))</span><span class="w">
+    </span><span class="kc">TRUE</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="kc">FALSE</span><span class="w">
+  </span><span class="p">})</span><span class="w">
+
+  </span><span class="k">if</span><span class="p">(</span><span class="n">load_status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">F</span><span class="p">){</span><span class="w">
+    </span><span class="n">false_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">false_index</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+
+  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">load_status</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">AllResults</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tbl</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1"># Save combined results</span><span class="w">
+</span><span class="n">save</span><span class="p">(</span><span class="n">AllResults</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">here</span><span class="o">::</span><span class="n">here</span><span class="p">(</span><span class="s2">"HPC/HPC_Results"</span><span class="p">,</span><span class="w"> </span><span class="s2">"AllResults.Rdata"</span><span class="p">))</span><span class="w">
+
+</span><span class="c1"># Write list of failed jobs for rerunning</span><span class="w">
+</span><span class="n">write.table</span><span class="p">(</span><span class="n">unique</span><span class="p">(</span><span class="n">param_grid</span><span class="p">[</span><span class="n">false_index</span><span class="p">,</span><span class="w"> </span><span class="s1">'rerun_name'</span><span class="p">]),</span><span class="w">
+            </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">here</span><span class="o">::</span><span class="n">here</span><span class="p">(</span><span class="s2">"HPC"</span><span class="p">,</span><span class="w"> </span><span class="s2">"rerun1.txt"</span><span class="p">),</span><span class="w">
+            </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">col.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">quote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>After preparing everything locally, let’s move to the HPC cluster.</p>
+
+<h1 id="3-emory-hpc-cluster">3. Emory HPC Cluster</h1>
+
+<h2 id="31-ssh-connection">3.1 SSH Connection</h2>
+
+<p>Open your <strong>terminal</strong>, log in, and navigate to your project folder.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh your_emory_id@clogin01.sph.emory.edu
+</code></pre></div></div>
+
+<p>It shows in the terminal:</p>
+
+<p><img src="/images/Emory-HPC-figs/hpc_work_folder.png" alt="HPC Work Folder" /></p>
+
+<p><strong>:star2:First-time Users</strong>: Download <code class="language-plaintext highlighter-rouge">dSQ</code> (a job submission tool) to your HPC working directory.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/ycrc/dSQ
+</code></pre></div></div>
+
+<h2 id="32-transfer-files">3.2 Transfer Files</h2>
+
+<p>Transfer your local project folder to HPC.</p>
+
+<p>:bangbang:<strong>Keep the folder structure unchanged</strong>—transfer at minimum: <code class="language-plaintext highlighter-rouge">.Rproj</code>, <code class="language-plaintext highlighter-rouge">HPC</code> folder, and related folder.</p>
+
+<p><strong>Option 1: Using scp</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scp <span class="nt">-r</span> /local/path/to/Emory-HPC your_emory_id@clogin01.sph.emory.edu:~/path/to/destination/
+</code></pre></div></div>
+
+<p><strong>Option 2: Using FileZilla</strong></p>
+
+<p>Download FileZilla from <a href="https://filezilla-project.org/download.php">filezilla-project.org</a>. This allows drag-and-drop file transfer. Enter the following in the quick connect bar:</p>
+<ul>
+  <li><strong>Host</strong>: <code class="language-plaintext highlighter-rouge">clogin01.sph.emory.edu</code></li>
+  <li><strong>Username</strong>: Your Emory ID</li>
+  <li><strong>Password</strong>: Your Emory password</li>
+  <li><strong>Port</strong>: 22</li>
+</ul>
+
+<p><img src="/images/Emory-HPC-figs/fileZilla.png" alt="FileZilla Interface" /></p>
+
+<h2 id="33-submit-your-job">3.3 Submit Your Job</h2>
+
+<p>Now you should have the same project folder structure on the cluster. Navigate to your <code class="language-plaintext highlighter-rouge">HPC</code> folder where the <code class="language-plaintext highlighter-rouge">joblist_n*.txt</code> files are located.</p>
+
+<p><img src="/images/Emory-HPC-figs/HPC.png" alt="HPC Folder Structure" /></p>
+
+<h3 id="1-set-up-environment">(1) Set up environment</h3>
+
+<p>Set the dSQ path (adjust to your actual path where you just downloaded <code class="language-plaintext highlighter-rouge">dSQ</code>):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dsq_path <span class="o">=</span> <span class="s2">"/path/dSQ"</span>
+
+module load python/3.8
+module load R/4.2.2
+</code></pre></div></div>
+
+<h3 id="2-generate-sh-files">(2) Generate .sh files</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>i <span class="k">in</span> <span class="si">$(</span><span class="nb">seq </span>1 6<span class="si">)</span><span class="p">;</span> <span class="k">do 
+  </span>python <span class="s2">"</span><span class="nv">$dsq_path</span><span class="s2">/dSQ.py"</span> <span class="nt">--job-file</span> joblist_n<span class="nv">$i</span>.txt <span class="nt">--batch-file</span> joblist_n<span class="nv">$i</span>.sh <span class="nt">--job-name</span> reg<span class="nv">$i</span> <span class="nt">--mail-type</span> ALL
+<span class="k">done
+
+for </span>i <span class="k">in</span> <span class="si">$(</span><span class="nb">seq </span>1 6<span class="si">)</span><span class="p">;</span> <span class="k">do 
+  </span><span class="nb">sed</span> <span class="nt">-i</span> <span class="s1">'s@'</span><span class="s2">"</span><span class="nv">$dsq_path</span><span class="s2">"</span><span class="s1">'/dSQBatch.py@python '</span><span class="s2">"</span><span class="nv">$dsq_path</span><span class="s2">"</span><span class="s1">'/dSQBatch.py@'</span> <span class="s2">"joblist_n</span><span class="nv">$i</span><span class="s2">.sh"</span>
+  <span class="nb">sed</span> <span class="nt">-i</span> <span class="s1">'/#SBATCH --mail-type "ALL"/a #SBATCH --mail-user=your_email@emory.edu\nmodule load python/3.8\nmodule load R/4.2.2'</span> joblist_n<span class="nv">$i</span>.sh
+  <span class="nb">sed</span> <span class="nt">-i</span> <span class="s1">'1a #SBATCH --partition=short-cpu'</span> joblist_n<span class="nv">$i</span>.sh
+<span class="k">done</span>
+</code></pre></div></div>
+
+<p>The first command generates <code class="language-plaintext highlighter-rouge">.sh</code> files from <code class="language-plaintext highlighter-rouge">joblist_n*.txt</code>.</p>
+
+<p>The second command customizes settings:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">--job-name</code>: Job name (currently <code class="language-plaintext highlighter-rouge">reg</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">--mail-user</code>: Your Emory email for status notifications</li>
+  <li><code class="language-plaintext highlighter-rouge">--partition</code>: Choose from the following: e.g. short-cpu (8 hours)</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Partition</th>
+      <th>Time Limit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>short-cpu</td>
+      <td>8:00:00</td>
+    </tr>
+    <tr>
+      <td>day-long-cpu</td>
+      <td>24:00:00</td>
+    </tr>
+    <tr>
+      <td>week-long-cpu</td>
+      <td>7-00:00:00</td>
+    </tr>
+    <tr>
+      <td>month-long-cpu</td>
+      <td>31-00:00:00</td>
+    </tr>
+    <tr>
+      <td>interactive-cpu</td>
+      <td>2:00:00</td>
+    </tr>
+    <tr>
+      <td>largemem</td>
+      <td>7-01:00:00</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This generates 6 <code class="language-plaintext highlighter-rouge">.sh</code> files.</p>
+
+<p><img src="/images/Emory-HPC-figs/sh_files.png" alt="Generated Shell Scripts" /></p>
+
+<h3 id="3-submit-sh-files">(3) Submit .sh files</h3>
+
+<p>Submit one job:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sbatch joblist_n1.sh
+</code></pre></div></div>
+
+<p>Submit all 6 jobs together:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>i <span class="k">in</span> <span class="si">$(</span><span class="nb">seq </span>1 6<span class="si">)</span><span class="p">;</span> <span class="k">do
+  </span>sbatch joblist_n<span class="nv">$i</span>.sh
+<span class="k">done</span>
+</code></pre></div></div>
+
+<h3 id="4-check-job-status">(4) Check job status</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>squeue <span class="c"># return status of all jobs of all users</span>
+squeue <span class="nt">--job</span> &lt;your_job_number&gt;     <span class="c"># Check specific job</span>
+squeue <span class="nt">-u</span> &lt;your_username&gt;          <span class="c"># Check all your jobs</span>
+</code></pre></div></div>
+
+<p><strong>Cancel jobs:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scancel &lt;your_job_number&gt;                    <span class="c"># Cancel specific job</span>
+scancel &lt;job_id1&gt;,&lt;job_id2&gt;,&lt;job_id3&gt;        <span class="c"># Cancel multiple jobs</span>
+scancel <span class="nt">-u</span> &lt;your_username&gt;                   <span class="c"># Cancel all your jobs</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">.out</code> file contains messages, warnings, and errors. Check it if issues arise.</p>
+
+<p><img src="/images/Emory-HPC-figs/out.png" alt="Job Output" /></p>
+
+<p>After all jobs <strong>complete successfully</strong>, you can clean up temporary files or keep them (remove all files ending in .out or .tsv):</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="k">*</span>out <span class="k">*</span>tsv
+</code></pre></div></div>
+
+<h2 id="34-summarize-results">3.4 Summarize Results</h2>
+
+<p>Results from each simulation are stored in <code class="language-plaintext highlighter-rouge">HPC_Results/</code>.</p>
+
+<p><img src="/images/Emory-HPC-figs/iresults.png" alt="Results Folder" /></p>
+
+<p>To summarize:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># make sure you are in HPC folder</span>
+Rscript 3_summarize_results.R
+</code></pre></div></div>
+
+<p>The file <code class="language-plaintext highlighter-rouge">AllResults.Rdata</code> will be saved in <code class="language-plaintext highlighter-rouge">HPC/HPC_Results/</code>. Please transfer this file back to your local computer and keep it in the same directory structure, <code class="language-plaintext highlighter-rouge">HPC/HPC_Results/</code>, for further analysis..</p>
+
+<hr />
+
+<p><em>Thanks to Anna Guo’s blog on <a href="https://guoanna.com/posts/2023-09-01-parallel-job/">HPC tutorial</a> for the helpful reference.</em></p>]]></content><author><name></name></author><category term="HPC" /><category term="R" /><category term="Simulation" /><summary type="html"><![CDATA[A comprehensive guide to running large-scale simulation studies on Emory University's HPC cluster using R]]></summary></entry></feed>

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1250" height="710" viewBox="0 0 1250 710" role="img" aria-labelledby="title desc">
+<title id="title">Healthcare expenditure disparities</title>
+<desc id="desc">Reference graph with H, Race, C and C_H grouped in X, SES, Insurance, Behavior, Health, and Expenditure. H–C and C–Race have arrowheads at both ends. Specific component variables are omitted.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 L 2.5 5 Z" fill="context-stroke"/></marker></defs>
+<rect width="1250" height="710" fill="#fff"/>
+<rect x="125" y="340" width="220" height="335" rx="20" fill="#FAFBFC" stroke="#B7C2CC" stroke-width="2"/>
+<text x="235" y="375" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="28" fill="#647587">X</text>
+<path d="M 325.00 250.00 L 400.00 250.00" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="Race" data-target="SES" data-direction="forward" d="M 325.00 250.00 L 400.00 250.00" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 301.02 281.52 L 531.98 424.16" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="Race" data-target="Insurance" data-direction="forward" d="M 301.02 281.52 L 531.98 424.16" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 316.65 269.71 L 887.92 438.68" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="Race" data-target="Health" data-direction="forward" d="M 316.65 269.71 L 887.92 438.68" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 286.99 212.59 C 430 68, 600 68, 757.20 211.05" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="Race" data-target="Behavior" data-direction="forward" d="M 286.99 212.59 C 430 68, 600 68, 757.20 211.05" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 288.75 213.18 C 550 -35, 840 -35, 1084.60 209.60" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="Race" data-target="Expenditure" data-direction="forward" d="M 288.75 213.18 C 550 -35, 840 -35, 1084.60 209.60" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 493.18 290.57 L 566.07 418.13" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="SES" data-target="Insurance" data-direction="forward" d="M 493.18 290.57 L 566.07 418.13" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 540.00 250.00 L 699.00 250.00" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="SES" data-target="Behavior" data-direction="forward" d="M 540.00 250.00 L 699.00 250.00" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 527.41 274.60 L 896.05 432.59" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="SES" data-target="Health" data-direction="forward" d="M 527.41 274.60 L 896.05 432.59" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 513.97 216.54 C 700 75, 890 75, 1073.13 211.38" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="SES" data-target="Expenditure" data-direction="forward" d="M 513.97 216.54 C 700 75, 890 75, 1073.13 211.38" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 629.79 420.21 L 760.44 289.56" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="Insurance" data-target="Behavior" data-direction="forward" d="M 629.79 420.21 L 760.44 289.56" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 695.00 460.00 L 877.00 460.00" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="Insurance" data-target="Health" data-direction="forward" d="M 695.00 460.00 L 877.00 460.00" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 669.54 431.93 C 760 400, 935 286, 1020.31 269.84" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="Insurance" data-target="Expenditure" data-direction="forward" d="M 669.54 431.93 C 760 400, 935 286, 1020.31 269.84" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 831.16 290.90 L 929.53 420.00" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="Behavior" data-target="Health" data-direction="forward" d="M 831.16 290.90 L 929.53 420.00" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 901.00 250.00 L 1007.00 250.00" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="Behavior" data-target="Expenditure" data-direction="forward" d="M 901.00 250.00 L 1007.00 250.00" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 991.29 420.17 L 1092.52 291.34" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="Health" data-target="Expenditure" data-direction="forward" d="M 991.29 420.17 L 1092.52 291.34" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 111.00 250.00 L 175.00 250.00" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="H" data-target="Race" data-direction="forward" d="M 111.00 250.00 L 175.00 250.00" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 57.71 289.11 C 15 425, 55 555, 179.80 579.27" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="H" data-target="C_H" data-direction="forward" d="M 57.71 289.11 C 15 425, 55 555, 179.80 579.27" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 77.02 290.39 C 90 365, 145 400, 185.89 418.17" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="H" data-target="C" data-direction="both" d="M 77.02 290.39 C 90 365, 145 400, 185.89 418.17" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<path d="M 197.58 407.57 C 160 375, 165 310, 202.72 283.38" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="C" data-target="Race" data-direction="both" d="M 197.58 407.57 C 160 375, 165 310, 202.72 283.38" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<path d="M 345.00 409.00 L 439.56 288.72" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="X" data-target="SES" data-direction="forward" d="M 345.00 409.00 L 439.56 288.72" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 345.00 493.00 L 490.26 473.43" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="X" data-target="Insurance" data-direction="forward" d="M 345.00 493.00 L 490.26 473.43" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 345.00 457.00 L 730.99 281.40" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="X" data-target="Behavior" data-direction="forward" d="M 345.00 457.00 L 730.99 281.40" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 345.00 614.00 C 570 690, 725 596, 904.64 492.04" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="X" data-target="Health" data-direction="forward" d="M 345.00 614.00 C 570 690, 725 596, 904.64 492.04" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M 345.00 582.00 C 680 885, 780 400, 1049.20 282.96" fill="none" stroke="#fff" stroke-width="6.5"/>
+<path data-source="X" data-target="Expenditure" data-direction="forward" d="M 345.00 582.00 C 680 885, 780 400, 1049.20 282.96" fill="none" stroke="#718393" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow)"/>
+<g data-node="H"><ellipse cx="70" cy="250" rx="36" ry="36" fill="#EDF0F4" stroke="#91A0AD" stroke-width="2" stroke-dasharray="7 6"/>
+<text x="70" y="261" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#364657" font-style="italic">H</text></g>
+<g data-node="Race"><ellipse cx="250" cy="250" rx="70" ry="38" fill="#FCDCE6" stroke="#91A0AD" stroke-width="2"/>
+<text x="250" y="261" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="31" fill="#364657">Race</text></g>
+<g data-node="C"><ellipse cx="235" cy="440" rx="52" ry="38" fill="#EDF0F4" stroke="#91A0AD" stroke-width="2"/>
+<text x="235" y="451" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#364657" font-style="italic">C</text></g>
+<g data-node="C_H"><ellipse cx="235" cy="590" rx="52" ry="38" fill="#EDF0F4" stroke="#91A0AD" stroke-width="2"/>
+<text x="235" y="601" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#364657" font-style="italic">C<tspan font-size="27" dy="9">H</tspan></text></g>
+<g data-node="SES"><ellipse cx="470" cy="250" rx="65" ry="38" fill="#D3E8F8" stroke="#91A0AD" stroke-width="2"/>
+<text x="470" y="261" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="31" fill="#364657">SES</text></g>
+<g data-node="Insurance"><ellipse cx="590" cy="460" rx="100" ry="38" fill="#CDE8DA" stroke="#91A0AD" stroke-width="2"/>
+<text x="590" y="471" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="31" fill="#364657">Insurance</text></g>
+<g data-node="Behavior"><ellipse cx="800" cy="250" rx="96" ry="38" fill="#FFF0B5" stroke="#91A0AD" stroke-width="2"/>
+<text x="800" y="261" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="31" fill="#364657">Behavior</text></g>
+<g data-node="Health"><ellipse cx="960" cy="460" rx="78" ry="38" fill="#E2DAF3" stroke="#91A0AD" stroke-width="2"/>
+<text x="960" y="471" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="31" fill="#364657">Health</text></g>
+<g data-node="Expenditure"><ellipse cx="1125" cy="250" rx="113" ry="38" fill="#F9DFCE" stroke="#91A0AD" stroke-width="2"/>
+<text x="1125" y="261" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="31" fill="#364657">Expenditure</text></g>
+</svg>
